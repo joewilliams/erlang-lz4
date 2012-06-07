@@ -4,6 +4,8 @@ An Erlang NIF for using lz4 compression.
 
 This code was inspired by https://github.com/steeve/python-lz4
 
+Thanks to davisp for code review.
+
 ## license
 
 Copyright 2012, Joe Williams <joe@joetify.com>
