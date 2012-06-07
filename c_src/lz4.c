@@ -1,5 +1,5 @@
 /*
-Copyright 2011, Joe Williams <joe@joetify.com>
+Copyright 2012, Joe Williams <joe@joetify.com>
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
