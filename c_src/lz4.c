@@ -44,8 +44,13 @@ static inline void store_le32(char *c, u_int32_t x)
 
 static inline u_int32_t load_le32(const char *c)
 {
-    const u_int8_t *d = (const u_int8_t *)c;
-    return d[0] | (d[1] << 8) | (d[2] << 16) | (d[3] << 24);
+  const u_int8_t *d = (const u_int8_t *)c;
+  u_int32_t r = d[0];
+
+  r = (r << 8) | d[1];
+  r = (r << 8) | d[2];
+  r = (r << 8) | d[3];
+  return r;
 }
 
 static const int hdr_size = sizeof(u_int32_t);
@@ -89,6 +94,7 @@ compress(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]) {
   ErlNifBinary source;
   char *result_buf = NULL;
   int dest_size;
+  int real_size;
 
   if (!enif_inspect_binary(env, argv[0], &source)) return enif_make_badarg(env);
 
@@ -98,7 +104,8 @@ compress(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]) {
 
   store_le32(result_buf, source.size);
 
-  LZ4_compress(source.data, result_buf + hdr_size, source.size);
+  real_size = LZ4_compress(source.data, result_buf + hdr_size, source.size);
+  enif_realloc_binary(&result, real_size);
 
   return enif_make_tuple2(env, atom_ok, result);
 }
