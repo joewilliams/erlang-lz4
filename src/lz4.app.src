@@ -1,0 +1,7 @@
+{application, lz4, [
+    {description, "NIF for lz4"},
+    {vsn, "0.1"},
+    {registered, []},
+    {applications, [kernel, stdlib]},
+    {env, []}
+]}.
