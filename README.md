@@ -1,3 +1,5 @@
+*** Someone else wrote a better NIF, use https://github.com/szktty/erlang-lz4 ***
+
 # erlang-lz4
 
 An Erlang NIF for using lz4 compression.
@@ -5,6 +7,10 @@ An Erlang NIF for using lz4 compression.
 This code was inspired by https://github.com/steeve/python-lz4
 
 Thanks to davisp for code review.
+
+## known issues
+
+* segfaults on osx
 
 ## license
 
